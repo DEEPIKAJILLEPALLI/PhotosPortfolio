@@ -1,0 +1,128 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-matbackground: (50 : #f9f9f9,
+  100 : #efeff1,
+  200 : #e5e5e8,
+  300 : #dadade,
+  400 : #d2d2d7,
+  500 : #cacad0,
+  600 : #c5c5cb,
+  700 : #bdbdc4,
+  800 : #b7b7be,
+  900 : #ababb3,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #fefeff,
+  A700 : #e5e5ff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+
+
+$md-matwhite: (50 : #ffffff,
+  100 : #fdfdfe,
+  200 : #fcfcfd,
+  300 : #fafafc,
+  400 : #f9f9fc,
+  500 : #f8f8fb,
+  600 : #f7f7fa,
+  700 : #f6f6fa,
+  800 : #f5f5f9,
+  900 : #f3f3f8,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+
+/* For use in src/lib/core/theming/_palette.scss  31cf8d*/
+$md-matbutton: (50 : #e7faf2,
+  100 : #c3f2df,
+  200 : #9beaca,
+  300 : #73e1b5,
+  400 : #55daa5,
+  500 : #37d495,
+  600 : #31cf8d,
+  700 : #2ac982,
+  800 : #23c378,
+  900 : #16b967,
+  A100 : #ebfff4,
+  A200 : #b8ffd9,
+  A400 : #85ffbd,
+  A700 : #6cffb0,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$BucklePage-primary: mat-palette($md-matwhite, 50);
+$BucklePage-accent: mat-palette($mat-pink, A200, A100, A400);
+$BucklePage-warn:mat-palette($md-matbutton, 600);
+
+// The warn palette is optional (defaults to red).
+$BucklePage-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$BucklePage-theme: mat-light-theme($BucklePage-primary, $BucklePage-accent, $BucklePage-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($BucklePage-theme);
+// @include mat-input-theme($md-matbutton);
+// @include mat-button-theme(mat-palette($md-matbutton, 600));
+// @include mat-button-theme($candy-app-theme);
+
+/* For use in src/lib/core/theming/_palette.scss */

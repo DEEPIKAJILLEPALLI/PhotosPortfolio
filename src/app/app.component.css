@@ -1,0 +1,19 @@
+/* @import '~@ng-masonry-grid/ng-masonry-grid.css'; */
+
+example-button-row {
+  display: table-cell;
+}
+
+.container{
+    width:100%;
+}
+.left-side{
+width: 80%;
+display: block;
+float: left;
+}
+.right-side{
+width: 20%;
+position: fixed;
+right:0;
+}
