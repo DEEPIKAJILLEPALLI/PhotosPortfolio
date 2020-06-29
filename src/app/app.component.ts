@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
-import { Masonry, MasonryGridItem } from 'ng-masonry-grid'; 
+import { Masonry, MasonryGridItem } from 'ng-masonry-grid';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,7 @@ import { Masonry, MasonryGridItem } from 'ng-masonry-grid';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  // title = 'app';
   _masonry: Masonry;
-  // @Output() onNgMasonryInit: EventEmitter<Masonry>
 
   masonryItems = [
     { imgSrc: './assets/imgs/1.jpg' },
@@ -35,87 +33,97 @@ export class AppComponent {
     { imgSrc: './assets/imgs/20.jpg' },
     { imgSrc: './assets/imgs/25.jpg' }, //D:\Learning\MasonryDemo\Demo\25.jpg 
   ];
- 
+
   onNgMasonryInit($event: Masonry) {
     this._masonry = $event;
   }
-  
+
   // Append items to NgMasonryGrid
   appendItems() {
-    if (this._masonry) { // Check if Masonry instance exists
-      this._masonry.setAddStatus('append'); // set status to 'append'
-      this.masonryItems.push( ...this.masonryItems 
-); // some grid items: items
-    }
+    //     if (this._masonry) { // Check if Masonry instance exists
+    //       this._masonry.setAddStatus('append'); // set status to 'append'
+    //       this.masonryItems.push( ...this.masonryItems 
+    // ); // some grid items: items
+    //     }
+    this.masonryItems.push(...this.masonryItems);
+
   }
-  
+
   // Prepend grid items to NgMasonryGrid
   prependItems() {
-    if (this._masonry) {
-      // set status to 'prepend' before adding items to NgMasonryGrid otherwise default: 'append' will applied
-      this._masonry.setAddStatus('prepend');
-      this.masonryItems.splice(0, 0,  ... this.masonryItems 
-);
-    }
+    //     if (this._masonry) {
+    //       // set status to 'prepend' before adding items to NgMasonryGrid otherwise default: 'append' will applied
+    //       this._masonry.setAddStatus('prepend');
+    //       this.masonryItems.splice(0, 0,  ... this.masonryItems 
+    // );
+    //     }
+    this.masonryItems.splice(0, 0, ... this.masonryItems);
+
   }
-  
+
   // Add items to NgMasonryGrid
-  addItems() {  
+  addItems() {
     // if (this._masonry) {
-      // this._masonry.setAddStatus('add'); // set status to 'add'
-      this.masonryItems.push( ... this.masonryItems 
-);
+    // this._masonry.setAddStatus('add'); // set status to 'add'
+    this.masonryItems.push(... this.masonryItems
+    );
     // }
   }
-  
+
   // Remove selected item from NgMasonryGrid, For example, (click)="removeItem($event)" event binding on grid item
   // Note: 'id' on ng-masonry-grid is required to remove actual item from the list
+  // removeItem($event: any) {
+  //   debugger;
+  //   if (this._masonry) {
+  //     this._masonry.removeItem($event.currentTarget)  // removeItem() expects actual DOM (ng-masonry-grid-item element)
+  //         .subscribe((item: MasonryGridItem) => { // item: removed grid item DOM from NgMasonryGrid
+  //           if (item) {
+  //             let id = item.element.getAttribute('id'); // Get id attribute and then find index 
+  //             let index = id.split('-')[2];
+  //             // remove grid item from Masonry binding using index (because actual Masonry items order is different from this.masonryItems items) 
+  //             this.masonryItems.splice(index, 1); 
+  //           }
+  //         });
+  //   }
+  // }
   removeItem($event: any) {
-    debugger;
-    if (this._masonry) {
-      this._masonry.removeItem($event.currentTarget)  // removeItem() expects actual DOM (ng-masonry-grid-item element)
-          .subscribe((item: MasonryGridItem) => { // item: removed grid item DOM from NgMasonryGrid
-            if (item) {
-              let id = item.element.getAttribute('id'); // Get id attribute and then find index 
-              let index = id.split('-')[2];
-              // remove grid item from Masonry binding using index (because actual Masonry items order is different from this.masonryItems items) 
-              this.masonryItems.splice(index, 1); 
-            }
-          });
-    }
+    console.log(event)
   }
-  
+  removeItems(item) {
+    this.masonryItems.splice(item, 1);
+  }
   // Remove first item from NgMasonryGrid
   removeFirstItem() {
     if (this._masonry) {
       this._masonry.removeFirstItem()
-          .subscribe( (item: MasonryGridItem) => {
-            if (item) {
-              let id = item.element.getAttribute('id');
-              let index = id.split('-')[2];
-              this.masonryItems.splice(index, 1);
-            }
-          });
+        .subscribe((item: MasonryGridItem) => {
+          if (item) {
+            let id = item.element.getAttribute('id');
+            let index = id.split('-')[2];
+            this.masonryItems.splice(index, 1);
+          }
+        });
     }
   }
-  
+
   // Remove all items from NgMasonryGrid
   removeAllItems() {
-    if (this._masonry) {
-      this._masonry.removeAllItems()
-          .subscribe( (items: MasonryGridItem) => {
-              // remove all items from the list
-              this.masonryItems = [];
-          });
-    }
+    // if (this._masonry) {
+    //   this._masonry.removeAllItems()
+    //       .subscribe( (items: MasonryGridItem) => {
+    // remove all items from the list
+    this.masonryItems = [];
+    // });
+    // }
   }
-  
+
   // reorder items to original position
   // Note: Add masonry option:- horizontalOrder: true
   reorderItems() {
-    if (this._masonry) {
-        this._masonry.reOrderItems();
-    }
+    // if (this._masonry) {
+    //   this._masonry.reOrderItems();
+      this.masonryItems.sort()
+    //}
   }
 
   scrollAnimationOptions = {

@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgMasonryGridModule } from 'ng-masonry-grid';
 import {MatButtonModule} from '@angular/material/button';
+import { PhotosComponent } from './photos/photos.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,

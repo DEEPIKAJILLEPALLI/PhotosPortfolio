@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="left-side">
+    <ng-masonry-grid (onNgMasonryInit)="onNgMasonryInit($event)"
+      [scrollAnimationOptions]="{ animationEffect:  animation_Effect , minDuration : 0.4, maxDuration : 0.7 }"
+      [masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }" [useAnimation]="true" [useImagesLoaded]="true">
+      <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let item of masonryItems; let i = index;"
+        (click)="removeItem($event)">
+        <img src={{item.imgSrc}} alt="No image" />
+      </ng-masonry-grid-item>
+    </ng-masonry-grid>
+  </div>
+
+  <div class="right-side">
+    <div class="example-button-row" >
+      <button mat-raised-button color="accent" (click)="addItems()">Add Items</button>
+      <button mat-raised-button color="warn" (click)="prependItems()">Prepend Items</button>
+      <button mat-raised-button color="accent" (click)="removeAllItems()">Remove All Items</button>
+      <button mat-raised-button color="warn" (click)="removeFirstItem()">Remove First Item</button>
+      <button mat-raised-button color="accent" (click)="reorderItems()">Re-Order Items</button>
+      <button mat-raised-button color="warn" (click)="appendItems()">Append Items</button>
+    </div>
+  </div>
+</div>
